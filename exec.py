@@ -36,41 +36,6 @@ def query():
         if prompt:
             result = data_analysis_agent.run(prompt)
             st.write(result)
-            
-            # Example query processing for generating graphs
-            if "plot" in prompt.lower() and "bar" in prompt.lower():
-                # Generate a bar plot
-                x_label = st.text_input("Enter x-axis label")
-                y_label = st.text_input("Enter y-axis label")
-                plot_data = df[prompt.split('from')[1].split('to')[0]]
-                fig, ax = plt.subplots()
-                plot_data.plot(kind='bar', ax=ax)
-                ax.set_title('Bar Plot')
-                ax.set_xlabel(x_label)
-                ax.set_ylabel(y_label)
-                st.pyplot(fig)  # Display the plot
-            elif "plot" in prompt.lower() and "line" in prompt.lower():
-                # Generate a line plot
-                x_label = st.text_input("Enter x-axis label")
-                y_label = st.text_input("Enter y-axis label")
-                plot_data = df[prompt.split('from')[1].split('to')[0]]
-                fig, ax = plt.subplots()
-                plot_data.plot(kind='line', ax=ax)
-                ax.set_title('Line Plot')
-                ax.set_xlabel(x_label)
-                ax.set_ylabel(y_label)
-                st.pyplot(fig)  # Display the plot
-            elif "plot" in prompt.lower() and "histogram" in prompt.lower():
-                # Generate a histogram
-                x_label = st.text_input("Enter x-axis label")
-                plot_data = df[prompt.split('from')[1].split('to')[0]]
-                fig, ax = plt.subplots()
-                plot_data.plot(kind='hist', ax=ax)
-                ax.set_title('Histogram')
-                ax.set_xlabel(x_label)
-                st.pyplot(fig)  # Display the plot
-            else:
-                st.write("No specific graph was generated for the query.")
         else:
             st.write("Please enter a query.")
 
